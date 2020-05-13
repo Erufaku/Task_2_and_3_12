@@ -1,46 +1,36 @@
-/*
- * cstring0.cpp
- *
- *  Created on: 9 мая 2020 г.
- *      Author: coolg
- */
 #include "cstring0.hpp"
 #include <chrono>
-void cstring0::output(std::ostream &stream) const {
-	for (int i = 0; i < FindLength(); ++i) {
-	    stream << FindElement(i);
-	}
+#include <omp.h>
+void cstring0::output(std::ostream& stream) const {
+    for (int i = 0; i < FindLength(); ++i) {
+        stream << FindElement(i);
+    }
 
-	stream << '\n';
+    stream << '\n';
 }
 
-cstring0 operator+(const cstring& left, const cstring& right){
+cstring0 operator+(const cstring& left, const cstring& right) {
     int l = left.FindLength();
     int r = right.FindLength();
+    int i;
     int new_len = l + r;
     //string new_str = left.GetStr() + right.GetStr();
     char* new_str;
+
     new_str = new char[new_len + 1];
     auto timeBegin = std::chrono::steady_clock().now();
-#pragma omp parallel sections
-    {
-#pragma omp section
-        {
-            for (int i = 0; i < l; ++i) {
-                new_str[i] = left.GetStr()[i];
+#pragma omp parallel for shared(new_str) private(i)
+    for (i = 0; i < l; ++i) {
+                new_str[i] = left.FindElement(i);
             }
-       }
-#pragma omp section
-        {
-            for (int i = l; i < new_len; ++i) {
-                new_str[i] = right.GetStr()[i % r];
-            }
-      }
+#pragma omp parallel for shared(new_str) private(i)
+    for (i = l; i < new_len; ++i) {
+                new_str[i] = right.FindElement(i % r);
     }
     auto timeEnd = std::chrono::steady_clock().now();
     using std::chrono::milliseconds;
     auto timeRes = std::chrono::duration_cast<milliseconds>(timeEnd - timeBegin).count();
     std::cout << "Time = " << timeRes << std::endl;
 
-    return cstring0(new_str,new_len);
+    return cstring0(new_str, new_len);
 }
