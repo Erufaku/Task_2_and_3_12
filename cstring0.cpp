@@ -22,7 +22,7 @@ cstring0 operator+(const cstring& left, const cstring& right) {
 #pragma omp parallel for private(i)
         for (i = 0; i < l; ++i) {
             new_str[i] = left.FindElement(i);
-            new_str[i + l] = right.FindElement(i % r);
+            new_str[i + l] = right.FindElement(i);
         }
     auto timeEnd = std::chrono::steady_clock().now();
     using std::chrono::milliseconds;
