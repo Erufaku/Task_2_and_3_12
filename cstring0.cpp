@@ -1,12 +1,17 @@
 #include "cstring0.hpp"
 #include <chrono>
 #include <omp.h>
-void cstring0::output(std::ostream& stream) const {
-    for (int i = 0; i < FindLength(); ++i) {
-        stream << FindElement(i);
+void cstring0::output() const {
+    ofstream outputFile(this->getFilename());
+    if (!outputFile) {
+        std::cout << "Can't find file!" << endl;
+        exit(-2);
     }
-
-    stream << '\n';
+    for (int i = 0; i < FindLength(); ++i) {
+	    outputFile << FindElement(i);
+	}
+    outputFile << '\n';
+    outputFile.close();
 }
 
 cstring0 operator+(const cstring& left, const cstring& right) {
