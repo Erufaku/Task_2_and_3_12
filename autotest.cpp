@@ -1,7 +1,7 @@
 /*
  * autotest.cpp
  *
- *  Created on: 9 ìàÿ 2020 ã.
+ *  Created on: 9 Ã¬Ã Ã¿ 2020 Ã£.
  *      Author: coolg
  */
 
@@ -10,65 +10,43 @@
 using namespace std;
 
 void autotest1(){
-	std::cout << "test ¹1: ";
-	int c=0;
-    char r[4];
-    char a[2]; strcpy(a, "o");
-    char b[3]; strcpy(b, "ne");
+    std::cout << "test Â¹1: ";
+    cstring0 r("one", 3);
+    string a = "on";
+    string b = "e";
 
-    cstring0 m(a);
-    cstring0 n(b);
+    cstring0 m(a,2);
+    cstring0 n(b,1);
     cstring0 k;
-    strcpy(r, "one");
     k = m + n;
-    for(int i=0;i<4;i++){
-        if(k.FindElement(i)!=r[i]){
-            std::cout << "\n"<<k.FindElement(i)<< " != "<<r[i]<<endl;
-            c++;
-        }
-    }
-    if(c==0) std::cout<<"OK!"<<endl;
+    if(r == k) std::cout<<"OK!"<<endl;
     else std::cout<<"Failed!"<<endl;
 }
 void autotest2(){
-	std::cout << "test ¹2: ";
-	int c=0;
-    char r[4];
-    char a[2]; strcpy(a, "o");
-    char b[3]; strcpy(b, "ne");
-    cstring1 m(a);
-    cstring1 n(b);
-    cstring1 k;
-    strcpy(r, "one");
+    std::cout << "test Â¹2: ";
+    cstring0 r("one", 3);
+    string a = "on";
+    string b = "e";
+
+    cstring1 m(a, 2);
+    cstring1 n(b, 1);
+    cstring0 k;
     k = m + n;
-    for(int i=0;i<4;i++){
-        if(k.FindElement(i)!=r[i]){
-            std::cout << "\n"<<k.FindElement(i)<< " != "<<r[i]<<endl;
-            c++;
-        }
-    }
-    if(c==0) std::cout<<"OK!"<<endl;
-    else std::cout<<"Failed!"<<endl;
+    if (r == k) std::cout << "OK!" << endl;
+    else std::cout << "Failed!" << endl;
 }
 void autotest3(){
-	std::cout<<"Test ¹3: ";
-	int c=0;
-    char r[4];
-    char a[2]; strcpy(a, "o");
-    char b[3]; strcpy(b, "ne");
-    cstring1 m(a);
-    cstring0 n(b);
-    cstring1 k;
-    strcpy(r, "one");
+    std::cout<<"Test Â¹3: ";
+    cstring0 r("one", 3);
+    string a = "on";
+    string b = "e";
+
+    cstring0 m(a, 2);
+    cstring1 n(b, 1);
+    cstring0 k;
     k = m + n;
-    for(int i=0;i<4;i++){
-        if(k.FindElement(i)!=r[i]){
-            std::cout << "\n"<<k.FindElement(i)<< " != "<<r[i]<<endl;
-            c++;
-        }
-    }
-    if(c==0) std::cout<<"OK!"<<endl;
-    else std::cout<<"Failed!"<<endl;
+    if (r == k) std::cout << "OK!" << endl;
+    else std::cout << "Failed!" << endl;
 }
 void autotest4(){
 
