@@ -1,6 +1,8 @@
 #include "cstring0.hpp"
 #include <chrono>
 #include <omp.h>
+#include <fstream>
+#include <sstream>
 void cstring0::output() const {
     ofstream outputFile(this->getFilename());
     if (!outputFile) {
