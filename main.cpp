@@ -56,27 +56,15 @@ int main()
     }
     inputFile.close();
 
-    int nErrors = 0;
-    for (int i = 0; i < (int)strings.size(); ++i) {
-        ofstream outputFile(strings[i]->getFilename());
-        if (!outputFile) {
-            ++nErrors;
-            continue;
-        }
-
-        strings[i]->output(outputFile);
-        outputFile.close();
+	auto strIt = strings.begin();
+    while (strIt != strings.end()) {
+        (*strIt)->output();
+        ++strIt;
     }
 
     for (auto& ptr : strings) {
         delete ptr;
     }
-
-    if (nErrors > 0) {
-        std::cout << "Error! Wrong Numbers!";
-        return -2;
-    } else {
-        return 0;
-    }
+    return 0;
 }
 
