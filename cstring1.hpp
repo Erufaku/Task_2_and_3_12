@@ -1,7 +1,7 @@
 /*
  * cstring1.h
  *
- *  Created on: 9 мая 2020 г.
+ *  Created on: 9 Г¬Г Гї 2020 ГЈ.
  *      Author: coolg
  */
 
@@ -21,7 +21,7 @@ public:
     cstring1(const cstring& other):cstring(other){};
 	cstring1(const cstring1 &other);
 	using cstring::operator =;
-	void output(std::ostream &stream) const override final;
+	void output() const override final;
 };
 
 #endif /* SRC_CSTRING1_H_ */
