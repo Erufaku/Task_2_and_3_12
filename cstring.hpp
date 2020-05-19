@@ -11,7 +11,6 @@ using namespace std;
 class cstring
 {
 private:
-
     string str;
     string filename;
     int len;
