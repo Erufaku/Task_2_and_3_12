@@ -34,7 +34,7 @@ cstring0 operator+(const cstring& left, const cstring& right) {
     }
 #pragma omp for 
     for (i = l; i < new_len; ++i) {
-        new_str[i] = right.FindElement(i % r);
+        new_str[i] = right.FindElement(i - l);
     }
 }
     auto timeEnd = std::chrono::steady_clock().now();
