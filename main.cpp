@@ -17,7 +17,7 @@ using namespace std;
 int main()
 {   
     const int l = 10000;
-    char a[l];
+    char *a = new char[l];
     for (int i = 0; i < l; i++) a[i] = 'a'; 
     cstring0 b(a);
     cstring0 c(a);
